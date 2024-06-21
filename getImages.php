@@ -1,18 +1,26 @@
-fetch('getImages.php') // Adjust this URL to match the path on your server
-  .then(response => response.json())
-  .then(images => {
-    const slideshowContainer = document.getElementById('slideshow-container');
-    images.forEach((image, index) => {
-      const slideDiv = document.createElement('div');
-      slideDiv.className = 'mySlides w3-display-container';
-      slideDiv.innerHTML = `
-        <img src="${image}" style="width:100%">
-        <div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-          <h3>Image ${index + 1}</h3>
-        </div>
-      `;
-      slideshowContainer.appendChild(slideDiv);
-    });
-    showSlides();
-  })
-  .catch(error => console.error('Error loading images:', error));
+<?php
+
+// Directory path to scan for images
+$imageDirectory = 'Website_photos_rbking/WorkingAreasforSlideshow/landscapes';
+
+// Initialize array to store image URLs
+$imageUrls = [];
+
+// Scan the directory for image files
+if (is_dir($imageDirectory)) {
+    $files = scandir($imageDirectory);
+    foreach ($files as $file) {
+        // Check if the file is an image (allowed extensions: jpg, jpeg, png, gif)
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        if (in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif'])) {
+            // Build the full URL to the image
+            $imageUrl = $imageDirectory . '/' . $file;
+            // Add image URL to array
+            $imageUrls[] = $imageUrl;
+        }
+    }
+}
+
+// Output image URLs as JSON
+header('Content-Type: application/json');
+echo json_encode($imageUrls);
