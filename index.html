@@ -109,40 +109,60 @@ body {font-family: "Lato", sans-serif}
       <p class="w3-opacity w3-center"><i>King, R. B., Bell, C. M., & Constable, S. (2020). Mapping hydrocarbon-charged marine sedimentary basins using towed electromagnetic systems: Case studies from the southern North Sea. Interpretation, 8(3), T739–T751. https://doi.org/10.1190/int-2020-0006.1</i></p><br>
       <p class="w3-opacity w3-center"><i>King, R. B., & Constable, S. (2019). Toward a comprehensive understanding of seafloor electromagnetic methods for geological mapping and resource exploration. Geochemistry, Geophysics, Geosystems, 20(11), 5415–5431. https://doi.org/10.1029/2019GC008536</i></p><br>
 
- <!-- Automatic Slideshow -->
-<div class="w3-content w3-display-container" style="max-width:800px">
-  <img class="mySlides" src="Website_photos_rbking/00100lrPORTRAIT_00100_BURST20200829125451750_COVER-EDIT (1).jpg" style="width:100%">
-  <img class="mySlides" src="Website_photos_rbking/Photo on 2020-08-20 at 16.07.jpg" style="width:100%">
-  <img class="mySlides" src="Website_photos_rbking/Photo on 2021-01-06 at 13.43 #2.jpg" style="width:100%">
-  
-  <!-- Previous and Next buttons -->
-  <button class="w3-button w3-black w3-display-left" onclick="plusSlides(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusSlides(1)">&#10095;</button>
+
+<!-- Photos Section -->
+<div class="w3-container w3-content w3-center w3-padding-64" id="photos">
+  <h2 class="w3-wide">Photos</h2>
+  <div id="slideshow-container" class="w3-display-container w3-center"></div>
 </div>
 
+<!-- End Page Content -->
+</div>
+
+<!-- Image of location/map -->
+<img src="/FB_IMG_1517373171099 (1).jpg" style="width:100%">
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+</footer>
+
+<!-- Script for Slideshow -->
 <script>
-var slideIndex = 0;
-showSlides();
+  // Fetch images from server-side PHP script or server directory listing
+  fetch('getImages.php') // Adjust this URL to your server-side script or directory listing
+    .then(response => response.json())
+    .then(images => {
+      const slideshowContainer = document.getElementById('slideshow-container');
+      images.forEach((image, index) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'mySlides w3-display-container';
+        slideDiv.innerHTML = `
+          <img src="${image}" style="width:100%">
+          <div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3>Image ${index + 1}</h3>
+          </div>
+        `;
+        slideshowContainer.appendChild(slideDiv);
+      });
+      showSlides();
+    })
+    .catch(error => console.error('Error loading images:', error));
 
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
+  var slideIndex = 0;
+
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 3000); // Change image every 3 seconds
-}
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
 </script>
 
 </body>
