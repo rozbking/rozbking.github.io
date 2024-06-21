@@ -24,3 +24,4 @@ if (is_dir($imageDirectory)) {
 // Output image URLs as JSON
 header('Content-Type: application/json');
 echo json_encode($imageUrls);
+?>
