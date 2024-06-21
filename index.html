@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Roz King</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {font-family: "Lato", sans-serif}
-.mySlides {display: none}
-</style>
+  <title>Roz King</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {font-family: "Lato", sans-serif}
+    .mySlides {display: none}
+    .contact-info { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+  </style>
 </head>
 <body>
 
@@ -22,7 +23,7 @@ body {font-family: "Lato", sans-serif}
     <a href="#research" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RESEARCH</a>
     <a href="#publications" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PUBLICATIONS</a>
     <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PHOTOS</a>
-    <a href="#cv" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CV</a>
+    <a href="https://example.com/your-cv.pdf" class="w3-bar-item w3-button w3-padding-large w3-hide-small" target="_blank">CV</a>
   </div>
 </div>
 
@@ -32,78 +33,40 @@ body {font-family: "Lato", sans-serif}
   <a href="#research" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">RESEARCH</a>
   <a href="#publications" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">PUBLICATIONS</a>
   <a href="#photos" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">PHOTOS</a>
-  <a href="#cv" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CV</a>
+  <a href="https://example.com/your-cv.pdf" class="w3-bar-item w3-button w3-padding-large" target="_blank" onclick="myFunction()">CV</a>
 </div>
 
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
-  <!-- Automatic Slideshow Images -->
-  <div id="slideshow-container" class="w3-display-container w3-center"></div>
-
-</div>
-
-<script>
-fetch('getImages.php')
-  .then(response => response.json())
-  .then(images => {
-    const slideshowContainer = document.getElementById('slideshow-container');
-    images.forEach((image, index) => {
-      const slideDiv = document.createElement('div');
-      slideDiv.className = 'mySlides w3-display-container';
-      slideDiv.innerHTML = `
-        <img src="${image}" style="width:100%">
-        <div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-          <h3>Image ${index + 1}</h3>
-        </div>
-      `;
-      slideshowContainer.appendChild(slideDiv);
-    });
-    showSlides();
-  })
-  .catch(error => console.error('Error loading images:', error));
-
-var slideIndex = 0;
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 5000); // Change image every 5 seconds
-}
-</script>
-
-
-
-      <!-- The Bio Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="bio">
-      <!-- Hi section -->
-  <div class="w3-row w3-padding-32">
-      <div class="w3-col m6 w3-large w3-margin-bottom" style="float: left;">
-        <img src="Website_photos_rbking/00100lrPORTRAIT_00100_BURST20200829125451750_COVER-EDIT (1).jpg" alt="RozBKing" style="width:100%">
-      </div>
-    <div class="w3-col m6 w3-large w3-margin-bottom w3-center" style="float: right; text-align: center;">
-      <h2>Roslynn B. King</h2>
-      <br>
-      Starting December 2024:<br>
-      <a href="https://geophysics.mines.edu" target="_blank">Department of Geophysics</a><br>
-      <a href="https://www.mines.edu" target="_blank">Colorado School of Mines</a><br>
-      <i class="fa fa-phone" style="width:30px"></i> phone: 720.345.2763<br>
-     <i class="fa fa-envelope" style="width:30px"> </i> email: rbking@ucsd.edu<br>
-      </div>
+  <!-- Slideshow under Photos Section -->
+  <div class="w3-container w3-content w3-padding-64" id="photos">
+    <h2 class="w3-wide w3-center">Photos</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+    <div id="slideshow-container" class="w3-display-container w3-center"></div>
   </div>
 
-
-
+  <!-- The Bio Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="bio">
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <img src="Website_photos_rbking/00100lrPORTRAIT_00100_BURST20200829125451750_COVER-EDIT (1).jpg" alt="RozBKing" style="width:100%">
+      </div>
+      <div class="w3-col m6 w3-large w3-margin-bottom w3-center contact-info">
+        <h2>Roslynn B. King</h2>
+        <br>
+        Starting December 2024:<br>
+        <a href="https://geophysics.mines.edu" target="_blank">Department of Geophysics</a><br>
+        <a href="https://www.mines.edu" target="_blank">Colorado School of Mines</a><br>
+        <i class="fa fa-phone" style="width:30px"></i> phone: 720.345.2763<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> email: rbking@ucsd.edu<br>
+      </div>
+    </div>
 
     <h2 class="w3-wide">Bio</h2>
     <p class="w3-justify">Roslynn King is a geophysicist specializing in the design, fabrication, and application of controlled-source electromagnetic (CSEM) instruments. Her research focuses on studying hazards and potential resources located on the continental shelf that have direct implications for human life. Specifically, Dr. King works on identifying and characterizing marine freshwater resources, hydrocarbon seeps, fluid pathways, volcanic hazards, and archaeological sites. These efforts aim to reduce ambiguities in climate models, manage groundwater resources in coastal communities, mitigate volcanic hazards, and enhance our understanding of human migration pathways.</p>
     <p class="w3-justify">Dr. King is currently engaged in magmatic imaging projects related to the submerged regions of the Taupo volcanic zone in New Zealand. Building on her experience with coastal aquifers and volcanic systems, she is also studying the hydrogeological processes beneath Pearl Harbor and Oahu’s southern shore to better preserve and protect the underlying aquifer. In the Southern California Bight, working alongside the Santa Ynez Band of Chumash Indians, she is shifting the focus of ocean exploration in ancestral homelands by launching studies centered on indigenous oral histories. Additionally, she is developing a new high-resolution CSEM system for offshore wind farm development. This new system will advance seafloor characterization and provide practical solutions for environmental and resource management.</p>
+    
     <div class="w3-row w3-padding-32">
       <h2 class="w3-wide">Interests</h2>
       <div class="w3-third">
@@ -122,29 +85,15 @@ function showSlides() {
   </div>
   
   <!-- The Band Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="research">
+  <div class="w3-container w3-content w3-center w3-padding-64" id="research">
     <h2 class="w3-wide">Research</h2>
     <p class="w3-opacity"><i>We love music</i></p>
     <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
       ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
       adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Name</p>
-        <img src="/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
-      </div>
-      <div class="w3-third">
-        <p>Name</p>
-        <img src="/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
-      </div>
-      <div class="w3-third">
-        <p>Name</p>
-        <img src="/w3images/bandmember.jpg" class="w3-round" alt="Random Name" style="width:60%">
-      </div>
-    </div>
   </div>
 
-  <!-- The Publication section -->
+<!-- The Publication section -->
   <div class="w3-black" id="publications">
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
       <h2 class="w3-wide w3-center">Publications</h2>
@@ -156,14 +105,27 @@ function showSlides() {
     </div>
   </div>
 
+  
   <!-- The Contact Section -->
-  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="photos">
-    <h2 class="w3-wide w3-center">Photos</h2>
-    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
-
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+    <h2 class="w3-wide w3-center">Contact</h2>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <img src="Website_photos_rbking/00100lrPORTRAIT_00100_BURST20200829125451750_COVER-EDIT (1).jpg" alt="RozBKing" style="width:100%">
+      </div>
+      <div class="w3-col m6 w3-large w3-margin-bottom w3-center contact-info">
+        <h2>Roslynn B. King</h2>
+        <br>
+        Starting December 2024:<br>
+        <a href="https://geophysics.mines.edu" target="_blank">Department of Geophysics</a><br>
+        <a href="https://www.mines.edu" target="_blank">Colorado School of Mines</a><br>
+        <i class="fa fa-phone" style="width:30px"></i> phone: 720.345.2763<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> email: rbking@ucsd.edu<br>
+      </div>
+    </div>
   </div>
   
-<!-- End Page Content -->
+  <!-- End Page Content -->
 </div>
 
 <!-- Image of location/map -->
@@ -175,26 +137,72 @@ function showSlides() {
   <i class="fa fa-linkedin w3-hover-opacity"></i>
 </footer>
 
+<!-- Script for Slideshow -->
 <script>
+  fetch('getImages.php')
+    .then(response => response.json())
+    .then(images => {
+      const slideshowContainer = document.getElementById('slideshow-container');
+      images.forEach((image, index) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'mySlides w3-display-container';
+        slideDiv.innerHTML = `
+          <img src="${image}" style="width:100%">
+          <div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3>Image ${index + 1}</h3>
+          </div>
+        `;
+        slideshowContainer.appendChild(slideDiv);
+      });
+      showSlides();
+    })
+    .catch(error => console.error('Error loading images:', error));
 
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+  var slideIndex = 0;
 
-// When the user clicks anywhere outside of the modal, close it
-var modal = document.getElementById('ticketModal');
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
   }
-}
+</script>
+
+<script>
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  var modal = document.getElementById('ticketModal');
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 </script>
 
 </body>
 </html>
+Explanation of Changes:
+Centering Contact Information: I added a class .contact-info with styles to vertically center align the contact information (phone, email, etc.) with the headshot image.
+
+css
+Copy code
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
