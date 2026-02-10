@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mom's Aquascaping Workshop 🦐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a1628;
+      --surface: #132337;
+      --surface2: #1a2f47;
+      --text: #e4f0fb;
+      --text-dim: #9db4ce;
+      --accent: #4fd1c5;
+      --green: #68d391;
+      --blue: #4299e1;
+      --purple: #9f7aea;
+      --aqua: #38b2ac;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Animated water background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(79, 209, 197, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(66, 153, 225, 0.1) 0%, transparent 50%);
+      z-index: -1;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, rgba(79, 209, 197, 0.15) 0%, rgba(66, 153, 225, 0.1) 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(79, 209, 197, 0.2);
+    }
+
+    .hero-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .gift-message {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: 12px;
+      margin: 24px auto;
+      max-width: 600px;
+      border-left: 4px solid var(--accent);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .gift-message strong {
+      color: var(--accent);
+    }
+
+    /* Navigation Cards */
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .nav-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 28px;
+      text-decoration: none;
+      color: var(--text);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .nav-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      background: var(--surface2);
+    }
+
+    .nav-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .nav-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .nav-card p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .nav-card.coming-soon {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .nav-card.coming-soon:hover {
+      transform: none;
+      border-color: transparent;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--purple);
+      color: var(--bg);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Info Section */
+    .info-section {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 48px 0;
+      border-left: 4px solid var(--green);
+    }
+
+    .info-section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--green);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .info-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-section li {
+      padding: 12px 0;
+      padding-left: 32px;
+      position: relative;
+      color: var(--text-dim);
+    }
+
+    .info-section li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(79, 209, 197, 0.2);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    footer .heart {
+      color: #fc8181;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .nav-grid { grid-template-columns: 1fr; }
+      .container { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="hero">
+      <span class="hero-icon">🦐</span>
+      <h1>Happy Birthday, Mom!</h1>
+      <p class="subtitle">Welcome to Your Personal Aquascaping Workshop</p>
+      
+      <div class="gift-message">
+        This site is your guide to building a beautiful, thriving shrimp tank together!
+        <br><br>
+        <strong>Your Gift:</strong> A day where I teach you everything about aquascaping, 
+        and we build an amazing ecosystem for shrimp and snails. This is our project — 
+        we'll pick out plants, design the hardscape, and create something living and beautiful that you can enjoy every day.
+        <br><br>
+        Everything you need to know is here, and we'll explore it all together! 💚
+      </div>
+    </div>
+
+    <h2 style="font-family: 'Playfair Display', serif; color: var(--accent); text-align: center; margin-bottom: 32px;">
+      Choose Your Tank Style
+    </h2>
+
+    <div class="nav-grid">
+      <a href="guides/walstad.html" class="nav-card">
+        <span class="nav-card-icon">🌱</span>
+        <h3>Walstad Method</h3>
+        <p>Low-tech, natural ecosystem. Dirted substrate creates a self-balancing environment. Minimal maintenance, maximum nature.</p>
+      </a>
+
+      <a href="guides/self-sustaining.html" class="nav-card">
+        <span class="nav-card-icon">♻️</span>
+        <h3>Self-Sustaining Tank</h3>
+        <p>The "set it and forget it" approach. Balanced ecosystem with hardy plants and simple care. Perfect for beginners!</p>
+      </a>
+
+      <a href="guides/planted.html" class="nav-card">
+        <span class="nav-card-icon">✨</span>
+        <h3>High-Tech Planted</h3>
+        <p>CO2 injection, strong lighting, nutrient dosing. Stunning plant growth and vibrant colors. More involved but spectacular results!</p>
+      </a>
+    </div>
+
+    <h2 style="font-family: 'Playfair Display', serif; color: var(--accent); text-align: center; margin: 60px 0 32px;">
+      Resources & Guides
+    </h2>
+
+    <div class="nav-grid">
+      <a href="guides/equipment.html" class="nav-card">
+        <span class="nav-card-icon">🛠️</span>
+        <h3>Equipment Guide</h3>
+        <p>Where to shop in Denver: The Fish Den, Aquarocks, and treasure hunting at Michael's & thrift stores for unique tanks!</p>
+      </a>
+
+      <a href="guides/species.html" class="nav-card">
+        <span class="nav-card-icon">🦐</span>
+        <h3>Shrimp & Snails</h3>
+        <p>Meet the stars of your tank! Neocaridina vs Caridina shrimp, mystery snails, nerites, and more.</p>
+      </a>
+
+      <a href="guides/care.html" class="nav-card">
+        <span class="nav-card-icon">💧</span>
+        <h3>Care & Maintenance</h3>
+        <p>Weekly routines, water parameters, feeding schedules, and troubleshooting. Keep your tank thriving!</p>
+      </a>
+
+      <a href="guides/plants.html" class="nav-card">
+        <span class="nav-card-icon">🌿</span>
+        <h3>Plant Encyclopedia</h3>
+        <p>From beginner-friendly to advanced species. Learn lighting needs, growth rates, and aquascaping techniques.</p>
+      </a>
+
+      <a href="#" class="nav-card coming-soon">
+        <span class="nav-card-icon">📸</span>
+        <h3>Our Tank Journey</h3>
+        <p>Photo gallery of our build day and progress updates. We'll add photos as we create your tank together!</p>
+        <span class="badge">Coming Soon</span>
+      </a>
+
+      <a href="#" class="nav-card coming-soon">
+        <span class="nav-card-icon">❓</span>
+        <h3>Troubleshooting</h3>
+        <p>Algae issues? Cloudy water? Parameter problems? Quick fixes and solutions for common challenges.</p>
+        <span class="badge">Coming Soon</span>
+      </a>
+    </div>
+
+    <div class="info-section">
+      <h2>What to Expect on Our Workshop Day</h2>
+      <ul>
+        <li>We'll visit The Fish Den or Aquarocks to pick out plants, shrimp, and hardscape materials</li>
+        <li>Maybe hunt for a unique tank shape at Michael's or local thrift stores</li>
+        <li>I'll teach you aquascaping principles: rule of thirds, creating depth, choosing focal points</li>
+        <li>Hands-on building: substrate layering, planting techniques, hardscape arrangement</li>
+        <li>Set up filtration, lighting, and get your tank cycling</li>
+        <li>Lunch together at a great Denver spot (my treat!)</li>
+        <li>You take home a thriving ecosystem you created — and the knowledge to maintain it!</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>Made with <span class="heart">♥</span> for the best mom</p>
+      <p style="margin-top: 12px; font-size: 0.85rem;">February 2026</p>
+    </footer>
+
+  </div>
+</body>
+</html>

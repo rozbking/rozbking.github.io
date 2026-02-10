@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walstad Method - Aquascaping Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a1628;
+      --surface: #132337;
+      --surface2: #1a2f47;
+      --text: #e4f0fb;
+      --text-dim: #9db4ce;
+      --accent: #4fd1c5;
+      --green: #68d391;
+      --blue: #4299e1;
+      --purple: #9f7aea;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(79, 209, 197, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(66, 153, 225, 0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    nav {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(79, 209, 197, 0.2);
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--green);
+      margin-top: 48px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--blue);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+
+    .highlight-box.pro {
+      border-left-color: var(--green);
+    }
+
+    .highlight-box.con {
+      border-left-color: #fc8181;
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .highlight-box.pro h3 {
+      color: var(--green);
+    }
+
+    .highlight-box.con h3 {
+      color: #fc8181;
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .step-number {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .comparison-card {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: 8px;
+      border-top: 3px solid var(--accent);
+    }
+
+    .comparison-card h4 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    code {
+      background: var(--surface2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(79, 209, 197, 0.2);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <nav>
+      <a href="../index.html">← Back to Home</a>
+    </nav>
+
+    <h1>🌱 The Walstad Method</h1>
+    <p class="subtitle">Natural, Low-Tech, Self-Balancing Ecosystem</p>
+
+    <p>
+      The Walstad Method, developed by Diana Walstad (author of "Ecology of the Planted Aquarium"), 
+      mimics natural aquatic ecosystems. It uses soil substrate capped with gravel or sand to create 
+      a nutrient-rich foundation where plants can thrive without CO2 injection or liquid fertilizers.
+    </p>
+
+    <div class="highlight-box">
+      <h3>Philosophy</h3>
+      <p>
+        <strong>"Let nature do the work."</strong> In Walstad tanks, plants extract nutrients directly from 
+        the soil, fish waste feeds the plants, and beneficial bacteria keep everything balanced. 
+        Minimal equipment, minimal intervention, maximum natural beauty.
+      </p>
+    </div>
+
+    <h2>Why Choose Walstad?</h2>
+
+    <div class="highlight-box pro">
+      <h3>✅ Pros</h3>
+      <ul>
+        <li><strong>Low maintenance:</strong> Infrequent water changes (sometimes monthly or less!)</li>
+        <li><strong>Budget-friendly:</strong> No CO2 system, minimal equipment, soil from garden stores</li>
+        <li><strong>Natural stability:</strong> Plants consume ammonia/nitrates, preventing algae blooms</li>
+        <li><strong>Educational:</strong> Watch a true ecosystem develop and balance itself</li>
+        <li><strong>Satisfying:</strong> There's magic in creating something that sustains itself</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box con">
+      <h3>⚠️ Cons & Considerations</h3>
+      <ul>
+        <li><strong>Patience required:</strong> Takes 4-6 weeks to fully cycle and stabilize</li>
+        <li><strong>Cloudy water initially:</strong> Soil can leach tannins, making water tea-colored at first</li>
+        <li><strong>Plant selection matters:</strong> Need hardy, fast-growing plants to outcompete algae</li>
+        <li><strong>Harder to rescape:</strong> Disturbing substrate releases nutrients into water column</li>
+        <li><strong>Not ideal for all fish:</strong> Works best with low bioload (shrimp are PERFECT!)</li>
+      </ul>
+    </div>
+
+    <h2>How to Build a Walstad Tank</h2>
+
+    <h3><span class="step-number">1</span> Choose Your Soil</h3>
+    <p><strong>Best options:</strong></p>
+    <ul>
+      <li><strong>Organic potting soil</strong> (Miracle-Gro Organic, Black Gold) - NO fertilizers added!</li>
+      <li><strong>Topsoil</strong> from garden centers - check ingredients, avoid perlite/vermiculite</li>
+      <li>Sift out large chunks, roots, and bark before using</li>
+      <li>Aim for 1-2 inches depth of soil</li>
+    </ul>
+
+    <h3><span class="step-number">2</span> Cap the Soil</h3>
+    <p>Cover soil with 1-2 inches of:</p>
+    <ul>
+      <li><strong>Pool filter sand</strong> (cheap, looks natural)</li>
+      <li><strong>Black Diamond blasting sand</strong> (popular in aquascaping)</li>
+      <li><strong>Fine gravel</strong> (natural or dark colors work well)</li>
+    </ul>
+    <p><em>Why cap it?</em> Prevents soil from clouding the water and keeps nutrients locked in substrate.</p>
+
+    <h3><span class="step-number">3</span> Plant Heavily from Day One</h3>
+    <p><strong>Critical for success!</strong> Plants compete with algae for nutrients. Dense planting = less algae.</p>
+    
+    <p><strong>Best Walstad plants:</strong></p>
+    <ul>
+      <li><strong>Amazon Sword</strong> - Heavy root feeder, loves soil, gets HUGE</li>
+      <li><strong>Cryptocoryne</strong> (Wendtii, Parva, Spiralis) - Slow but steady, many varieties</li>
+      <li><strong>Java Fern</strong> - Attach to driftwood/rocks, easy to grow</li>
+      <li><strong>Anubias</strong> - Incredibly hardy, low light, slow growing</li>
+      <li><strong>Water Sprite</strong> - Fast grower, nutrient sponge, floats or planted</li>
+      <li><strong>Hornwort</strong> - Algae-fighting machine, floats or weighted down</li>
+      <li><strong>Dwarf Sagittaria</strong> - Carpeting plant that spreads via runners</li>
+    </ul>
+
+    <h3><span class="step-number">4</span> Lighting</h3>
+    <p>
+      <strong>Low to moderate light</strong> (6-8 hours/day). Too much light = algae before plants establish. 
+      Start with shorter photoperiods (4-6 hours) for first few weeks.
+    </p>
+    <ul>
+      <li>LED clip-on lights (Nicrew, Hygger) work great</li>
+      <li>Even basic desk lamps can work for low-tech setups</li>
+      <li>Avoid direct sunlight (algae paradise)</li>
+    </ul>
+
+    <h3><span class="step-number">5</span> Filtration (Optional!)</h3>
+    <p>
+      Many Walstad tanks run filterless! Plants do the filtration. But gentle flow helps:
+    </p>
+    <ul>
+      <li><strong>Sponge filter</strong> - Gentle, shrimp-safe, adds surface agitation</li>
+      <li><strong>Small HOB filter</strong> - Low flow setting, provides water movement</li>
+      <li><strong>Air stone</strong> - Just for gas exchange if no filter</li>
+    </ul>
+
+    <h3><span class="step-number">6</span> The Cycling Process</h3>
+    <p><strong>Week 1-2:</strong> Water may be cloudy/tea-colored (tannins from soil). Normal! Do small water changes if too dark.</p>
+    <p><strong>Week 2-4:</strong> Possible algae bloom as nutrients balance. Don't panic! Plants are establishing roots.</p>
+    <p><strong>Week 4-6:</strong> Clarity improves, algae decreases, plants start growing. Ecosystem stabilizing!</p>
+    <p><strong>Week 6+:</strong> Tank is balanced. Add shrimp! 🦐</p>
+
+    <div class="highlight-box">
+      <h3>💡 Pro Tips from Experience</h3>
+      <ul>
+        <li>Mineralize your soil first (soak, dry, repeat 2-3 times) to reduce initial ammonia spike</li>
+        <li>Add floating plants immediately - they grow fast and starve algae</li>
+        <li>Don't mess with it too much early on - let the ecosystem establish</li>
+        <li>Water changes release nutrients from soil - go easy (10-20% weekly max)</li>
+        <li>Cherry shrimp THRIVE in Walstad tanks - the biofilm is endless shrimp food</li>
+      </ul>
+    </div>
+
+    <h2>Maintenance Schedule</h2>
+
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <h4>Daily</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ Quick visual check</li>
+          <li>✓ Feed shrimp (lightly!)</li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h4>Weekly</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ Remove dead leaves</li>
+          <li>✓ Trim fast growers</li>
+          <li>✓ 10-20% water change (optional after established)</li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h4>Monthly</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ Check parameters (pH, ammonia, nitrate)</li>
+          <li>✓ Clean glass if algae appears</li>
+          <li>✓ Prune overgrown plants</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Perfect for Shrimp!</h2>
+    <p>
+      Walstad tanks are <strong>ideal for cherry shrimp</strong>. The soil creates biofilm and microfauna 
+      that shrimp graze on constantly. Dense plants provide hiding spots for babies. Low flow keeps shrimplets safe. 
+      Stable parameters mean happy, breeding shrimp colonies!
+    </p>
+
+    <div class="highlight-box">
+      <h3>Recommended Stocking for 10-Gallon Walstad</h3>
+      <ul>
+        <li>10-20 Cherry Shrimp (Neocaridina) - will breed!</li>
+        <li>2-3 Nerite Snails - algae cleanup crew</li>
+        <li>OR 3-5 small fish (Celestial Pearl Danios, Chili Rasboras) + 10 shrimp</li>
+      </ul>
+    </div>
+
+    <h2>Troubleshooting</h2>
+
+    <h3>Cloudy water?</h3>
+    <p>Normal for first 2-4 weeks. Do 20% water changes every 2-3 days if very cloudy. Don't tear it down!</p>
+
+    <h3>Green water?</h3>
+    <p>Free-floating algae. Reduce light to 4-6 hours, add more fast-growing plants, be patient.</p>
+
+    <h3>Brown algae (diatoms)?</h3>
+    <p>Common in new tanks! Goes away on its own after 2-4 weeks. Snails help.</p>
+
+    <h3>Plants melting?</h3>
+    <p>Transition period - some stores grow plants emersed (above water). New growth will be aquatic. Trim dead leaves.</p>
+
+    <footer>
+      <p>Ready to build your Walstad tank? Let's do this together! 🌱</p>
+      <p style="margin-top: 12px;"><a href="../index.html" style="color: var(--accent);">← Back to Home</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>

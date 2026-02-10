@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Guide - Denver Aquascaping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a1628;
+      --surface: #132337;
+      --surface2: #1a2f47;
+      --text: #e4f0fb;
+      --text-dim: #9db4ce;
+      --accent: #4fd1c5;
+      --green: #68d391;
+      --blue: #4299e1;
+      --purple: #9f7aea;
+      --orange: #fb923c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(79, 209, 197, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(66, 153, 225, 0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    nav {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(79, 209, 197, 0.2);
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--green); }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--green);
+      margin-top: 48px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--blue);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    .store-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 32px;
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s;
+    }
+
+    .store-card:hover {
+      transform: translateX(4px);
+      border-left-color: var(--green);
+    }
+
+    .store-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .store-icon {
+      font-size: 1.8rem;
+    }
+
+    .store-info {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px 20px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .store-label {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .store-value {
+      color: var(--text-dim);
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 4px solid var(--purple);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
+      color: var(--purple);
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .pro-tip {
+      background: linear-gradient(135deg, rgba(79, 209, 197, 0.1) 0%, rgba(66, 153, 225, 0.05) 100%);
+      border: 1px solid rgba(79, 209, 197, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .pro-tip::before {
+      content: '💡 Pro Tip: ';
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(79, 209, 197, 0.2);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <nav>
+      <a href="../index.html">← Back to Home</a>
+    </nav>
+
+    <h1>🛠️ Equipment & Shopping Guide</h1>
+    <p class="subtitle">Where to Shop in Denver for Aquascaping Supplies</p>
+
+    <h2>🐠 Local Fish Stores</h2>
+
+    <div class="store-card">
+      <h3><span class="store-icon">🏪</span> The Fish Den</h3>
+      <div class="store-info">
+        <div class="store-label">Address:</div>
+        <div class="store-value">15940 E Colfax Ave, Aurora, CO 80011</div>
+        
+        <div class="store-label">Hours:</div>
+        <div class="store-value">Mon-Sat 10am-7pm, Sun 10am-6pm</div>
+        
+        <div class="store-label">Phone:</div>
+        <div class="store-value">(303) 366-4144</div>
+        
+        <div class="store-label">Best For:</div>
+        <div class="store-value">Cherry shrimp, basic equipment, beginner-friendly staff</div>
+      </div>
+      <p style="margin-top: 20px;">
+        <strong>What We'll Find Here:</strong> Live plants (usually Anubias, Java Fern, basic stems), 
+        cherry shrimp, Neocaridina varieties, basic equipment (filters, heaters, lights), aqua soil, 
+        and helpful staff who know their stuff!
+      </p>
+      <div class="pro-tip">
+Ask about their plant shipment days! Plants are freshest Wed/Thu usually. Cherry shrimp selection is excellent.
+      </div>
+    </div>
+
+    <div class="store-card">
+      <h3><span class="store-icon">🪨</span> Aquarocks</h3>
+      <div class="store-info">
+        <div class="store-label">Address:</div>
+        <div class="store-value">4115 S Broadway, Englewood, CO 80113</div>
+        
+        <div class="store-label">Hours:</div>
+        <div class="store-value">Tue-Sat 11am-6pm, Sun 12-5pm, Closed Monday</div>
+        
+        <div class="store-label">Phone:</div>
+        <div class="store-value">(303) 781-8278</div>
+        
+        <div class="store-label">Best For:</div>
+        <div class="store-value">Hardscape materials, rocks, driftwood, unique aquascaping supplies</div>
+      </div>
+      <p style="margin-top: 20px;">
+        <strong>What We'll Find Here:</strong> TONS of hardscape options! Dragon stone, seiryu stone, 
+        lava rock, spider wood, manzanita. This is the place for building your aquascape layout. 
+        Also carries premium substrates and specialty plants.
+      </p>
+      <div class="pro-tip">
+Bring photos of scapes you like! Staff can help select compatible rocks/wood. They sell by the pound, so you can mix and match to create the perfect layout.
+      </div>
+    </div>
+
+    <h2>🎨 Thrift & Craft Stores</h2>
+
+    <div class="store-card">
+      <h3><span class="store-icon">🎭</span> Michael's</h3>
+      <div class="store-info">
+        <div class="store-label">Locations:</div>
+        <div class="store-value">Multiple Denver locations - check michaels.com for nearest</div>
+        
+        <div class="store-label">Best For:</div>
+        <div class="store-value">Unique tank shapes! Glass vases, bowls, and containers</div>
+      </div>
+      <p style="margin-top: 20px;">
+        <strong>Hidden Gems:</strong> Glass vases section has amazing options for planted jars and 
+        nano tanks! Look for wide-mouth cylinders, fish bowls, apothecary jars. Often 40-50% off with coupons.
+      </p>
+      <div class="pro-tip">
+Download the Michael's app for coupons BEFORE we go. Also check clearance section - sometimes find glass containers for $5-10 that make perfect aquascapes!
+      </div>
+    </div>
+
+    <div class="store-card">
+      <h3><span class="store-icon">♻️</span> Thrift Stores (Arc, Goodwill, Savers)</h3>
+      <div class="store-info">
+        <div class="store-label">Best For:</div>
+        <div class="store-value">Unique tanks, glass containers, budget finds</div>
+      </div>
+      <p style="margin-top: 20px;">
+        <strong>Treasure Hunting:</strong> You never know what you'll find! Glass bowls, unique vases, 
+        vintage aquariums, interesting containers that make unconventional aquascapes. Always check for cracks!
+      </p>
+      <ul>
+        <li><strong>Arc Thrift - Colorado locations</strong> - Great housewares section</li>
+        <li><strong>Goodwill stores</strong> - Hit or miss but worth checking</li>
+        <li><strong>Savers (Value Village)</strong> - Better curation, decent glass selection</li>
+      </ul>
+      <div class="pro-tip">
+Thrift stores restock Wed-Thu mornings. Visit early for best selection! Bring your phone to Google "is this aquarium safe" for any unusual finds.
+      </div>
+    </div>
+
+    <h2>🌐 Online Resources</h2>
+
+    <div class="highlight-box">
+      <h3>When to Order Online</h3>
+      <ul>
+        <li><strong>Rare plants:</strong> BucePlant, Aquarium Co-Op, Modern Aquarium - better selection than local</li>
+        <li><strong>Specialty shrimp:</strong> Flip Aquatics, Shrimp Farm USA - higher grades, specific lines</li>
+        <li><strong>Equipment deals:</strong> Amazon, BulkReefSupply - often cheaper than local for filters, CO2</li>
+        <li><strong>Dry goods:</strong> Substrate, ferts, hardscape if buying in bulk</li>
+      </ul>
+    </div>
+
+    <h2>🛒 Shopping List by Tank Type</h2>
+
+    <h3>Walstad Method Starter Kit</h3>
+    <ul>
+      <li><strong>Tank:</strong> 5-10 gallon from thrift store or PetSmart (~$15-40)</li>
+      <li><strong>Soil:</strong> Miracle-Gro Organic from Home Depot (~$8)</li>
+      <li><strong>Sand cap:</strong> Pool filter sand from hardware store (~$10)</li>
+      <li><strong>Plants:</strong> Mixed package from Fish Den (~$30-50)</li>
+      <li><strong>Light:</strong> Basic LED clip-on (~$20-30)</li>
+      <li><strong>Sponge filter kit (optional):</strong> (~$15)</li>
+      <li><strong>Shrimp:</strong> 10 Cherry shrimp from Fish Den (~$30-40)</li>
+      <li><strong>Total: ~$130-200</strong></li>
+    </ul>
+
+    <h3>Self-Sustaining Kit</h3>
+    <ul>
+      <li><strong>Tank:</strong> 10 gallon standard (~$15-25)</li>
+      <li><strong>Substrate:</strong> Fluval Stratum 4L bag (~$25)</li>
+      <li><strong>Filter:</strong> Small sponge or HOB filter (~$15-30)</li>
+      <li><strong>Heater:</strong> 50W adjustable (~$15-20)</li>
+      <li><strong>Light:</strong> Nicrew or Hygger LED (~$30-40)</li>
+      <li><strong>Plants:</strong> Starter pack (~$40-60)</li>
+      <li><strong>Shrimp & snails:</strong> (~$50)</li>
+      <li><strong>Total: ~$190-250</strong></li>
+    </ul>
+
+    <h3>High-Tech Kit</h3>
+    <ul>
+      <li><strong>Tank:</strong> Rimless or UNS tank (~$60-150)</li>
+      <li><strong>CO2 system:</strong> Complete setup (~$150-250)</li>
+      <li><strong>Light:</strong> Fluval 3.0 or Chihiros (~$100-180)</li>
+      <li><strong>Substrate:</strong> ADA Amazonia 9L (~$50-70)</li>
+      <li><strong>Filter:</strong> Canister filter (~$80-120)</li>
+      <li><strong>Fertilizers:</strong> Starter set (~$30-50)</li>
+      <li><strong>Plants:</strong> Advanced selection (~$80-120)</li>
+      <li><strong>Hardscape:</strong> Rocks & wood from Aquarocks (~$40-80)</li>
+      <li><strong>Total: ~$590-1,020</strong></li>
+    </ul>
+
+    <h2>💰 Money-Saving Tips</h2>
+
+    <div class="pro-tip">
+Buy used tanks on Facebook Marketplace or Craigslist! People upgrade constantly. A $40 tank can be found for $15-20. Just check for leaks (fill with water outside for 24hrs).
+    </div>
+
+    <div class="pro-tip">
+Join "Colorado Aquarium Society" Facebook group. Members sell plants, shrimp, and equipment locally. Great deals and experienced hobbyists!
+    </div>
+
+    <div class="pro-tip">
+Start small and upgrade. A 5-gallon planted jar makes an amazing first project and costs under $100 total. Master it, then scale up!
+    </div>
+
+    <h2>📦 What to Buy Where</h2>
+
+    <div class="highlight-box">
+      <h3>The Fish Den</h3>
+      <ul>
+        <li>✓ Live shrimp and snails</li>
+        <li>✓ Basic plants (Anubias, Java Fern, stem plants)</li>
+        <li>✓ Aqua soil and substrate</li>
+        <li>✓ Filters, heaters, basic equipment</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <h3>Aquarocks</h3>
+      <ul>
+        <li>✓ Hardscape materials (rocks and driftwood)</li>
+        <li>✓ Specialty plants and rare species</li>
+        <li>✓ High-end equipment</li>
+        <li>✓ Aquascaping tools (scissors, tweezers)</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <h3>Michael's & Thrift Stores</h3>
+      <ul>
+        <li>✓ Unique tank shapes</li>
+        <li>✓ Glass containers for nano tanks</li>
+        <li>✓ Budget-friendly options</li>
+        <li>✓ Decorative elements (natural stones, etc.)</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <h3>Online (When Local Doesn't Cut It)</h3>
+      <ul>
+        <li>✓ Rare/specialty plants</li>
+        <li>✓ High-grade shrimp</li>
+        <li>✓ CO2 equipment</li>
+        <li>✓ Bulk fertilizers</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>Can't wait to explore these shops together and build your tank! 🦐🌿</p>
+      <p style="margin-top: 12px;"><a href="../index.html" style="color: var(--accent);">← Back to Home</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>

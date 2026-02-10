@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Sustaining Tank - Aquascaping Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a1628;
+      --surface: #132337;
+      --surface2: #1a2f47;
+      --text: #e4f0fb;
+      --text-dim: #9db4ce;
+      --accent: #4fd1c5;
+      --green: #68d391;
+      --blue: #4299e1;
+      --purple: #9f7aea;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(79, 209, 197, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(66, 153, 225, 0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    nav {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(79, 209, 197, 0.2);
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--green);
+      margin-top: 48px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--blue);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+
+    .highlight-box.pro {
+      border-left-color: var(--green);
+    }
+
+    .highlight-box.con {
+      border-left-color: #fc8181;
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .highlight-box.pro h3 {
+      color: var(--green);
+    }
+
+    .highlight-box.con h3 {
+      color: #fc8181;
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 20px;
+      color: var(--text-dim);
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .step-number {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .comparison-card {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: 8px;
+      border-top: 3px solid var(--accent);
+    }
+
+    .comparison-card h4 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(79, 209, 197, 0.2);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <nav>
+      <a href="../index.html">← Back to Home</a>
+    </nav>
+
+    <h1>♻️ Self-Sustaining Tank</h1>
+    <p class="subtitle">The "Set It and Forget It" Balanced Ecosystem</p>
+
+    <p>
+      A self-sustaining tank aims for perfect balance: enough plants to consume all fish/shrimp waste, 
+      minimal intervention needed, and a stable ecosystem that practically runs itself. It's the sweet spot 
+      between Walstad's ultra-natural approach and high-tech planted tanks' intensive care.
+    </p>
+
+    <div class="highlight-box">
+      <h3>Core Principle</h3>
+      <p>
+        <strong>"Balance inputs and outputs."</strong> Plants consume what animals produce. 
+        Animals consume what plants produce. You just watch, enjoy, and do minimal maintenance. 
+        This is aquarium zen mode.
+      </p>
+    </div>
+
+    <h2>Why Choose Self-Sustaining?</h2>
+
+    <div class="highlight-box pro">
+      <h3>✅ Pros</h3>
+      <ul>
+        <li><strong>Beginner-friendly:</strong> More forgiving than pure Walstad, simpler than high-tech</li>
+        <li><strong>Low cost:</strong> Basic equipment, no CO2, minimal additives</li>
+        <li><strong>Minimal maintenance:</strong> Biweekly water changes, trim plants occasionally</li>
+        <li><strong>Stable parameters:</strong> Plants buffer pH, consume nitrates naturally</li>
+        <li><strong>Rewarding:</strong> Watch the ecosystem develop and balance over time</li>
+        <li><strong>Flexible:</strong> Can upgrade to high-tech later if you want</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box con">
+      <h3>⚠️ Considerations</h3>
+      <ul>
+        <li><strong>Plant selection crucial:</strong> Need hardy, low-light species</li>
+        <li><strong>Patience required:</strong> 4-6 weeks to fully establish</li>
+        <li><strong>Light balance tricky:</strong> Too much = algae, too little = dying plants</li>
+        <li><strong>Limited plant options:</strong> Can't grow demanding carpeting plants or reds</li>
+        <li><strong>Slower growth:</strong> Plants grow steadily but not explosively</li>
+      </ul>
+    </div>
+
+    <h2>Essential Equipment</h2>
+
+    <h3>What You Need</h3>
+    <ul>
+      <li><strong>Tank:</strong> Any size works! 5-20 gallons ideal for beginners</li>
+      <li><strong>Substrate:</strong> Aqua soil (Fluval Stratum, ADA Amazonia) OR gravel + root tabs</li>
+      <li><strong>Filter:</strong> Sponge filter or small HOB - gentle flow for shrimp!</li>
+      <li><strong>Heater:</strong> If keeping tropical shrimp (78-80°F)</li>
+      <li><strong>Light:</strong> Basic LED (Nicrew, Hygger) 6-8 hours/day</li>
+      <li><strong>Air pump:</strong> For sponge filter OR standalone air stone</li>
+    </ul>
+
+    <h3>What You DON'T Need</h3>
+    <ul>
+      <li>❌ CO2 injection system</li>
+      <li>❌ Expensive high-output lights</li>
+      <li>❌ Liquid fertilizers (plants get nutrients from waste/substrate)</li>
+      <li>❌ Automated dosing pumps</li>
+      <li>❌ Complex timers and controllers</li>
+    </ul>
+
+    <h2>Building Your Self-Sustaining Tank</h2>
+
+    <h3><span class="step-number">1</span> Choose Your Substrate</h3>
+    
+    <p><strong>Option A: Aqua Soil (Easier)</strong></p>
+    <ul>
+      <li>Pre-loaded with nutrients for 1-2 years</li>
+      <li>Lowers pH (good for most shrimp)</li>
+      <li>Plants root easily, grow well</li>
+      <li>Examples: Fluval Stratum, ADA Amazonia, Controsoil</li>
+      <li>Cost: $20-40 for 5-gallon tank</li>
+    </ul>
+
+    <p><strong>Option B: Inert Substrate + Root Tabs (Budget)</strong></p>
+    <ul>
+      <li>Gravel, sand, or pool filter sand</li>
+      <li>Add root tabs (Seachem, API) near heavy root feeders</li>
+      <li>Doesn't alter water parameters</li>
+      <li>Cost: $10-15 total</li>
+    </ul>
+
+    <h3><span class="step-number">2</span> Select Hardy Plants</h3>
+    
+    <p><strong>Essential Fast Growers (Nutrient Sponges):</strong></p>
+    <ul>
+      <li><strong>Water Sprite</strong> - Grows like a weed, floats or planted</li>
+      <li><strong>Hornwort</strong> - Algae destroyer, fast growth</li>
+      <li><strong>Java Moss</strong> - Covers everything, shrimp love it</li>
+      <li><strong>Guppy Grass</strong> - Dense, soft, perfect for shrimplets</li>
+    </ul>
+
+    <p><strong>Midground Workhorses:</strong></p>
+    <ul>
+      <li><strong>Java Fern</strong> - Tie to driftwood, bulletproof</li>
+      <li><strong>Anubias (any variety)</strong> - Super slow, super easy</li>
+      <li><strong>Cryptocoryne Wendtii</strong> - Sets and forgets itself</li>
+      <li><strong>Amazon Sword</strong> - Big, impressive, low maintenance</li>
+    </ul>
+
+    <p><strong>Background Fillers:</strong></p>
+    <ul>
+      <li><strong>Vallisneria</strong> - Tall grass, spreads via runners</li>
+      <li><strong>Bacopa Monnieri</strong> - Stems, easy to trim and propagate</li>
+      <li><strong>Rotala Rotundifolia (green)</strong> - Bushy, beginner-friendly stem</li>
+    </ul>
+
+    <div class="highlight-box">
+      <h3>💡 The 60% Rule</h3>
+      <p>
+        Plant density should cover 60-70% of substrate and reach 50% of water volume initially. 
+        This gives plants advantage over algae from day one. You can always thin out later!
+      </p>
+    </div>
+
+    <h3><span class="step-number">3</span> Set Up Lighting</h3>
+    <ul>
+      <li><strong>Photoperiod:</strong> Start with 6 hours/day, gradually increase to 8 hours max</li>
+      <li><strong>Intensity:</strong> Low to medium (20-40 PAR at substrate for most clip-on LEDs)</li>
+      <li><strong>Placement:</strong> Centered over tank, not touching water</li>
+      <li><strong>Timer:</strong> Use a basic plug timer ($10) for consistency</li>
+    </ul>
+
+    <h3><span class="step-number">4</span> Cycle the Tank</h3>
+    
+    <p><strong>The Nitrogen Cycle (Quick Version):</strong></p>
+    <ol>
+      <li>Fish/shrimp waste → Ammonia (toxic)</li>
+      <li>Beneficial bacteria convert Ammonia → Nitrite (toxic)</li>
+      <li>Different bacteria convert Nitrite → Nitrate (less toxic)</li>
+      <li>Plants consume Nitrate (and ammonia directly!)</li>
+      <li>Result: Safe, stable water</li>
+    </ol>
+
+    <p><strong>How to Cycle:</strong></p>
+    <ul>
+      <li><strong>Fishless method:</strong> Add ammonia source (pure ammonia or fish food), wait 4-6 weeks, test water</li>
+      <li><strong>With plants method:</strong> Heavily plant immediately, add beneficial bacteria starter, wait 2-3 weeks, test water</li>
+      <li><strong>Goal:</strong> Ammonia 0 ppm, Nitrite 0 ppm, Nitrate &lt;20 ppm = READY FOR SHRIMP!</li>
+    </ul>
+
+    <h3><span class="step-number">5</span> Add Your Shrimp!</h3>
+    <p>
+      Once cycled, acclimate shrimp slowly (drip method for 1-2 hours). Start with 10 cherry shrimp. 
+      They'll breed if happy, and you'll have a thriving colony in months!
+    </p>
+
+    <h2>Maintenance Routine</h2>
+
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <h4>Daily (30 seconds)</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ Quick visual check</li>
+          <li>✓ Light on/off (or use timer)</li>
+          <li>✓ Feed shrimp (2-3x/week actually)</li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h4>Weekly (5 minutes)</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ Remove dead leaves</li>
+          <li>✓ Check for snail/shrimp babies</li>
+          <li>✓ Wipe front glass if needed</li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h4>Biweekly (30 minutes)</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ 20-30% water change</li>
+          <li>✓ Trim fast-growing plants</li>
+          <li>✓ Vacuum any detritus (optional)</li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h4>Monthly (15 minutes)</h4>
+        <ul style="margin-left: 0; list-style: none;">
+          <li>✓ Test parameters (pH, nitrate)</li>
+          <li>✓ Clean filter (rinse in old tank water)</li>
+          <li>✓ Replant trimmings if desired</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>The Magic of Balance</h2>
+
+    <p>
+      After 8-12 weeks, your tank reaches equilibrium. Plants grow steadily. Shrimp graze happily. 
+      Water stays crystal clear. You barely have to do anything. This is when aquariums go from 
+      "chore" to "living art you just enjoy."
+    </p>
+
+    <div class="highlight-box">
+      <h3>Signs of a Balanced Tank</h3>
+      <ul>
+        <li>✓ Water stays clear between water changes</li>
+        <li>✓ Minimal algae (or snails keep it in check)</li>
+        <li>✓ Plants show new growth weekly</li>
+        <li>✓ Shrimp are active, colorful, breeding</li>
+        <li>✓ You can skip a water change and nothing crashes</li>
+      </ul>
+    </div>
+
+    <h2>Recommended Stocking</h2>
+
+    <h3>For 10-Gallon Self-Sustaining Tank:</h3>
+    <ul>
+      <li><strong>Shrimp-focused:</strong> 15-25 Cherry Shrimp + 3-4 Nerite Snails</li>
+      <li><strong>Mixed community:</strong> 6-8 small fish (Chili Rasboras, Ember Tetras) + 10 shrimp + snails</li>
+      <li><strong>Snail paradise:</strong> 2 Mystery Snails + 3 Nerites + 5 Ramshorn + 10 shrimp</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+
+    <h3>Algae appears?</h3>
+    <p><strong>Solution:</strong> Reduce lighting to 6 hours, add more fast-growing plants, introduce snails, don't overfeed.</p>
+
+    <h3>Plants yellowing?</h3>
+    <p><strong>Solution:</strong> Add root tabs if using inert substrate, or plants may be transitioning from emersed growth (normal).</p>
+
+    <h3>Shrimp dying?</h3>
+    <p><strong>Check:</strong> Ammonia/nitrite (should be 0), pH swings (acclimate slowly), copper in water (use conditioner), failed molt (add calcium/mineral supplement).</p>
+
+    <h3>Cloudy water?</h3>
+    <p><strong>Bacterial bloom</strong> - normal in new tanks. Resolves in 3-7 days. Don't change water excessively.</p>
+
+    <footer>
+      <p>This is the perfect beginner setup! Simple, stable, stunning. 🌿</p>
+      <p style="margin-top: 12px;"><a href="../index.html" style="color: var(--accent);">← Back to Home</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
